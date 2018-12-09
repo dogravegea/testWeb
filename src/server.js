@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/views'));
 
-process.env.CC_FS_BUCKET="/images:" + process.env.BUCKET_HOST;
+process.env.CC_FS_BUCKET=/images:process.env.BUCKET_HOST;
 app.use('/static', express.static(process.env.APP_HOME + "/images"));
 
 // Add a bit of logging
