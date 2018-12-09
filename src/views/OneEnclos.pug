@@ -1,0 +1,33 @@
+extends layout.pug
+
+block entete
+    h2 
+        a(href= '/enclos') Retour 
+    h1 Vue en detail de #{obj.name}
+
+block content
+    .main.container
+        .row
+            .col-md-6
+                h2 taille: #{obj.taille}
+                h2 environnement: #{obj.environnement}
+            .col-md-6
+                - var urlMaj = '/majEnclos/' + obj.id
+                - var urlDel = '/delete/enclos/' + obj.id
+                .row
+                    h2
+                        .col-md-6
+                            a(href=urlMaj) MAJ
+                        .col-md-6
+                            a(href=urlDel) DEL
+
+        .row
+            h1 Singes présents dans l'enclos
+        .row
+            ul
+                each monkey in tabMonkey
+                    .row
+                        .col-md-12
+                            h2
+                                - var url = '/monkeys/' + monkey.id
+                                a(href=url) #{monkey.name}

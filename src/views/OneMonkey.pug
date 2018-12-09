@@ -1,0 +1,39 @@
+extends layout.pug
+
+block entete
+    h2 
+        a(href= '/') Retour 
+    h1 Vue en detail de #{obj.name}
+
+block content
+    .main.container
+        .row
+            .col-md-6
+                h2 age: #{obj.age}
+                h2 espece: #{obj.espece}
+            .col-md-6
+                .row
+                - var urlMaj = '/majSinge/' + obj.id
+                - var urlDel = '/delete/monkeys/' + obj.id
+                - var urlLier = '/LierAEnclos/' + obj.id
+                h2
+                    .col-md-3
+                        a(href=urlMaj) MAJ
+                    .col-md-3
+                        a(href=urlDel) DEL
+                    .col-md-3
+                        a(href=urlLier) Lier a l'enclos
+        .row
+            - var urlAddImg = '/addImg/' + obj.id
+            form(method='POST' action=urlAddImg enctype="multipart/form-data")
+                div.form-group
+                    label(for='file') Choisir la photo du singe
+                    input#file.form-control(type='file', name='file')
+                button.btn.btn-primary(type='submit') Ajouter l'image
+
+                                
+        .row
+            - var urlImg = obj.urlPhoto
+            if obj.urlPhoto != ""
+                img(src=urlImg)
+

@@ -1,0 +1,13 @@
+extends layout.pug
+
+block entete
+    h2 Mettre le singe dans l'enclos
+    
+block content
+    h1 Tous les enclos :
+    ul
+        each enclos in obj
+            h2
+                - var url = '/lier/' + id + '/' + enclos.id
+                a(class='button' href= url) #{enclos.name}
+                

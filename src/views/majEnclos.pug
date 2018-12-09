@@ -1,0 +1,21 @@
+extends layout.pug
+
+block entete
+    h2 
+        a(href= '/enclos') Retour
+
+block content
+    h2 Mettre a jour un enclos
+
+    - var url = '/update/enclos/' + id
+    form(method='POST' action=url)
+        div.form-group
+            label(for='name') Nom:
+            input#name.form-control(type='text', placeholder='nom enclos' name='name')
+        div.form-group
+            label(for='taille') Taille:
+            input#age.form-control(type='text', placeholder='taille enclos' name='taille')
+        div.form-group
+            label(for='environnement') Environnement:
+            input#espece.form-control(type='text', placeholder='environnement enclos' name='environnement')
+        button.btn.btn-primary(type='submit') Mettre a jour l'enclos

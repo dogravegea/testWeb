@@ -1,0 +1,21 @@
+extends layout.pug
+
+block entete
+    h2 
+        a(href= '/monkeys') Retour
+
+block content
+    h2 Mettre a jour un singe
+
+    - var url = '/update/monkeys/' + id
+    form(method='POST' action=url)
+        div.form-group
+            label(for='name') Nom:
+            input#name.form-control(type='text', placeholder='nom du singe' name='name')
+        div.form-group
+            label(for='age') Age:
+            input#age.form-control(type='text', placeholder='age du singe' name='age')
+        div.form-group
+            label(for='espece') Espece:
+            input#espece.form-control(type='text', placeholder='espece du singe' name='espece')
+        button.btn.btn-primary(type='submit') Mettre a jour le singe
