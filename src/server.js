@@ -19,8 +19,8 @@ app.use(bodyParser.json())
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/views'));
 
-process.env.CC_FS_BUCKET = '/some/empty/folder:' + process.env.BUCKET_HOST;
-app.use('/static', express.static('/some/empty/folder'));
+process.env.CC_FS_BUCKET = '/public:' + process.env.BUCKET_HOST;
+app.use('/static', express.static('/public'));
 
 // Add a bit of logging
 app.use(morgan('short'))
