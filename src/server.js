@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/views'));
-app.use('/static', express.static(process.env.BUCKET_HOST + '/images'));
+app.use('/static', express.static("/" + process.env.BUCKET_HOST + '/images'));
 
 // Add a bit of logging
 app.use(morgan('short'))
@@ -72,7 +72,7 @@ app.get('/LierAEnclos/:id', function (req, res) {
 app.post('/addImg/:id', upload.single('file'), function (req, res) {
     if (req.file != undefined) {
         let ext = req.file.originalname.substring(req.file.originalname.lastIndexOf('.'), req.file.originalname.length);
-        let urlDestination = process.env.BUCKET_HOST + '/images/' + req.params.id + ext;
+        let urlDestination = "/" + process.env.BUCKET_HOST + '/images/' + req.params.id + ext;
         //var imageData = fs.readFileSync(req.file.path);
         //fs.writeFileSync("src/test/" + req.params.id + ".png", imageData);
 
