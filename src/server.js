@@ -20,7 +20,7 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/views'));
 
 process.env.CC_FS_BUCKET = '/:' + process.env.BUCKET_HOST;
-app.use('/static', express.static(process.env.CC_FS_BUCKET));
+app.use('/static', express.static('/'));
 
 // Add a bit of logging
 app.use(morgan('short'))
