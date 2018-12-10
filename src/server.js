@@ -75,8 +75,8 @@ app.post('/addImg/:id', upload.single('file'), function (req, res) {
     if (req.file != undefined) {
         let ext = req.file.originalname.substring(req.file.originalname.lastIndexOf('.'), req.file.originalname.length);
         let urlDestination = __dirname + "/public/images/" + req.params.id + ext;
-        //var imageData = fs.readFileSync(req.file.path);
-        //fs.writeFileSync("src/test/" + req.params.id + ".png", imageData);
+        var imageData = fs.readFileSync(req.file.path);
+        fs.writeFileSync(urlDestination, imageData);
 
         fs.rename(req.file.path, urlDestination, function (err) {
             if (err)
