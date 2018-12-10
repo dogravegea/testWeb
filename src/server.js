@@ -78,16 +78,10 @@ app.post('/addImg/:id', upload.single('file'), function (req, res) {
         var imageData = fs.readFileSync(req.file.path);
         fs.writeFileSync(urlDestination, imageData);
 
-        fs.rename(req.file.path, urlDestination, function (err) {
-            if (err)
-                console.log(err);
-            else {
-                models.Monkey.update({ urlPhoto: "/static/" + req.params.id + ext }, { where: { id: req.params.id } })
-                    .then(() => {
-                        res.render('SingeMisAJour');
-                    })
-            }
-        })
+        models.Monkey.update({ urlPhoto: "/static/" + req.params.id + ext }, { where: { id: req.params.id } })
+            .then(() => {
+                res.render('SingeMisAJour');
+            })
     }
     else {
         models.Monkey.findOne({ where: { id: req.params.id } })
