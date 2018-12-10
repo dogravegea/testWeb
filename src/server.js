@@ -78,7 +78,7 @@ app.post('/addImg/:id', upload.single('file'), function (req, res) {
         var imageData = fs.readFileSync(req.file.path);
         fs.writeFileSync(urlDestination, imageData);
 
-        models.Monkey.update({ urlPhoto: "/static/" + req.params.id + ext }, { where: { id: req.params.id } })
+        models.Monkey.update({ urlPhoto: "/static/images" + req.params.id + ext }, { where: { id: req.params.id } })
             .then(() => {
                 res.render('SingeMisAJour');
             })
