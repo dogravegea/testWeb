@@ -74,7 +74,7 @@ app.get('/LierAEnclos/:id', function (req, res) {
 app.post('/addImg/:id', upload.single('file'), function (req, res) {
     if (req.file != undefined) {
         let ext = req.file.originalname.substring(req.file.originalname.lastIndexOf('.'), req.file.originalname.length);
-        let urlDestination = __dirname + "/public/images/" + req.params.id + ext;
+        let urlDestination = "/static/images/" + req.params.id + ext;
         //var imageData = fs.readFileSync(req.file.path);
         //fs.writeFileSync("src/test/" + req.params.id + ".png", imageData);
 
