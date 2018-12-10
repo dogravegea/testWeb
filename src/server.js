@@ -74,7 +74,7 @@ app.get('/LierAEnclos/:id', function (req, res) {
 app.post('/addImg/:id', upload.single('file'), function (req, res) {
     if (req.file != undefined) {
         let ext = req.file.originalname.substring(req.file.originalname.lastIndexOf('.'), req.file.originalname.length);
-        let urlDestination = "/static/images/" + req.params.id + ext;
+        let urlDestination = __dirname + "/public/images/" + req.params.id + ext;
         //var imageData = fs.readFileSync(req.file.path);
         //fs.writeFileSync("src/test/" + req.params.id + ".png", imageData);
 
@@ -82,7 +82,7 @@ app.post('/addImg/:id', upload.single('file'), function (req, res) {
             if (err)
                 console.log(err);
             else {
-                models.Monkey.update({ urlPhoto: "/static/images/" + req.params.id + ext }, { where: { id: req.params.id } })
+                models.Monkey.update({ urlPhoto: "/static/" + req.params.id + ext }, { where: { id: req.params.id } })
                     .then(() => {
                         res.render('SingeMisAJour');
                     })
